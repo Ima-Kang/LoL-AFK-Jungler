@@ -36,3 +36,4 @@ Also, make sure that your screen resolution is 1920x1080. If it's not:
 
 - The script will start by looking for the find match button. If it doesn't find it, something went wrong
 - If queue gets dodged or declined, don't do anything. The bot will pick up on it and requeue after a minute so just wait
+- You can stop the bot by pressing the '`' key
