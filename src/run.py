@@ -164,7 +164,6 @@ def key_input(objects):
         pass
     if RECORD:
         out.release()
-'''
 if __name__ == '__main__':
     manager = multiprocessing.Manager()
     shared_list = manager.list()
@@ -178,5 +177,3 @@ if __name__ == '__main__':
     proc1.terminate()
     proc2.join()
     print("Quitted")
-'''
-in_game([])
