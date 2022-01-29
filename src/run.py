@@ -11,8 +11,8 @@ import cli
 import multiprocessing
 warnings.filterwarnings('ignore')
 
-NAME = "Spongebôb"
-RECORD = True
+NAME = "Mineçraft"
+RECORD = False
 ENDPOINTS = {
     "eventdata" : "https://127.0.0.1:2999/liveclientdata/eventdata",
     "activeplayer": "https://127.0.0.1:2999/liveclientdata/activeplayer",
@@ -164,11 +164,10 @@ def key_input(objects):
         pass
     if RECORD:
         out.release()
-
+'''
 if __name__ == '__main__':
     manager = multiprocessing.Manager()
     shared_list = manager.list()
-
     proc1 = multiprocessing.Process(target=start, args=[shared_list])
     proc2 = multiprocessing.Process(target=key_input, args=[shared_list])
     proc1.start()
@@ -179,3 +178,5 @@ if __name__ == '__main__':
     proc1.terminate()
     proc2.join()
     print("Quitted")
+'''
+in_game([])

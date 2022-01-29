@@ -19,9 +19,8 @@ def cast_action(action, hold):
     pydirectinput.keyUp(action)
 
 def type_word(word):
-    for c in word:
-        cast_action(c, 0.01)
-    cast_action('enter', 0.01)
+    pydirectinput.typewrite(word)
+    cast_action('enter', 1)
 
 def right_click(p):
     win32api.SetCursorPos(p)
@@ -217,10 +216,12 @@ def recall(active_player):
 
 def level_up_ability(active_player):
     try:
+        active_player.update()
         active_player.current_level = active_player.get_level()
     except:
         return
-    
+    print("TEST")
+    print(active_player.champ_info["cast_order"])
     pydirectinput.keyDown("ctrl")
     for a in active_player.champ_info["cast_order"]:
         cast_action(a, 0.5)
@@ -300,9 +301,11 @@ def surrender():
     rand_mes = messages[random.randrange(len(messages))]
     cast_action('enter', 0.1)
     type_word("/ff")
+    '''
     for mes in rand_mes:
         cast_action('enter', 0.1)
         type_word(mes)
+    '''
 
 def check_player(active_player): #  Returning true means you disrupt the clearing
     try:
