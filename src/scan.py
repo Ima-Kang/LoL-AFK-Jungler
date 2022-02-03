@@ -20,7 +20,7 @@ def find(team, img, object):
     w = img_object.shape[1]
     h = img_object.shape[0]
 
-    if object == "red_bar" or object == "minion":
+    if object == "red_bar" or object == "minion" or object == "big_red":
         thresh = 0.98
     elif object == "small_camp" or object == "big_camp":
         thresh = 0.80
@@ -37,6 +37,8 @@ def find(team, img, object):
     res = []
     if object == "red_bar" and not len(locs):
         res = find(None, img, "minion")
+        if not res:
+            res = find(None, img, "big_red")
         return res
     if team == "ORDER":
         res = [loc for loc in locs if loc[0] < loc[1]]
