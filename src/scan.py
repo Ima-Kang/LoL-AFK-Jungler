@@ -24,7 +24,7 @@ def find(team, img, object):
         thresh = 0.98
     elif object == "small_camp" or object == "big_camp":
         thresh = 0.80
-    elif object == "buy":
+    elif object == "buy" or object == "search_item":
         thresh = 0.75
     elif object == "enemy_health" or object == "ally_health":
         thresh = 0.70

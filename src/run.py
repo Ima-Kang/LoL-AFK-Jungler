@@ -169,6 +169,7 @@ def key_input(objects):
         pass
     if RECORD:
         out.release()
+
 if __name__ == '__main__':
     manager = multiprocessing.Manager()
     shared_list = manager.list()
