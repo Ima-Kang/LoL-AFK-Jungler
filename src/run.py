@@ -13,6 +13,7 @@ warnings.filterwarnings('ignore')
 
 NAME = "Mineçraft"
 RECORD = False
+GAMES = 10
 ENDPOINTS = {
     "eventdata" : "https://127.0.0.1:2999/liveclientdata/eventdata",
     "activeplayer": "https://127.0.0.1:2999/liveclientdata/activeplayer",
@@ -91,7 +92,7 @@ def in_game(objects):
     '''
     print("In game")
     time.sleep(5)
-    objects[:] = ["red_bar", "minion", "enemy_health", "ally_health", "turret", "search_item"]
+    objects[:] = ["big_red", "red_bar", "minion", "enemy_health", "ally_health", "turret", "search_item"]
     actions.on_start(active_player)
     print("Bought starting item")
     while True:
@@ -106,6 +107,7 @@ def in_game(objects):
             break
 
 def start(objects):
+    game_count = 0
     print("Starting")
     while True:
         objects[:] = ["find_match", "in_queue", "accept", "ok"]
@@ -148,6 +150,9 @@ def start(objects):
             cli.find_button("ok_game", 1)
         if start_time - time.time() > 180:
             print("Timed out after 180 seconds")
+        game_count += 1
+        if game_count == GAMES:
+            break
 
 def key_input(objects):
     if RECORD:
