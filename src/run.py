@@ -109,8 +109,6 @@ def in_game(objects, settings):
 
 def start(objects, settings):
     game_count = 0
-    print(settings.name)
-    print(settings.games)
     print("Starting")
     while True:
         objects[:] = ["find_match", "in_queue", "accept", "ok"]
