@@ -9,11 +9,9 @@ import actions
 import keyboard
 import cli
 import multiprocessing
+
 warnings.filterwarnings('ignore')
 
-NAME = "Mineçraft"
-RECORD = False
-GAMES = 10
 ENDPOINTS = {
     "eventdata" : "https://127.0.0.1:2999/liveclientdata/eventdata",
     "activeplayer": "https://127.0.0.1:2999/liveclientdata/activeplayer",
@@ -22,6 +20,19 @@ ENDPOINTS = {
     "gamestats" : "https://127.0.0.1:2999/liveclientdata/gamestats",
     "allgamedata" : "https://127.0.0.1:2999/liveclientdata/allgamedata"
 }
+
+class Settings:
+    def __init__(self, record=False, name=None, games=0) -> None:
+        self.record = record
+        self.name = name
+        self.games = games
+    def set_record(self):
+        self.record = not self.record
+    def set_name(self):
+        self.name = not self.name
+    def set_games(self):
+        self.games = not self.games
+
 class player:
     def __init__(self):
         self.current_level = 1
@@ -60,7 +71,7 @@ def fetch(object):
         return players
     return 0
 
-def in_game(objects):
+def in_game(objects, settings):
     active_player = player()
 
     while not fetch("eventdata"):
@@ -70,7 +81,7 @@ def in_game(objects):
         try:
             for i, p in enumerate(fetch("playerlist")):
                 team = fetch("playerlist")[i]["team"]
-                if p["summonerName"] == NAME and team:
+                if p["summonerName"] == settings.name and team:
                     active_player.team = team
                     active_player.champ = fetch("playerlist")[i]["championName"].lower()
                     active_player.set_champ_info()
@@ -80,16 +91,6 @@ def in_game(objects):
             continue
     print(f"On team {active_player.team}")
     time.sleep(1)
-    '''
-    while True:
-        try:
-            active_player.update()
-            game_time = active_player.get_time()
-            if game_time < 1.0:
-                break
-        except:
-            return
-    '''
     print("In game")
     time.sleep(5)
     objects[:] = ["big_red", "red_bar", "minion", "enemy_health", "ally_health", "turret", "search_item"]
@@ -106,8 +107,10 @@ def in_game(objects):
             "Game is over"
             break
 
-def start(objects):
+def start(objects, settings):
     game_count = 0
+    print(settings.name)
+    print(settings.games)
     print("Starting")
     while True:
         objects[:] = ["find_match", "in_queue", "accept", "ok"]
@@ -137,7 +140,7 @@ def start(objects):
                 continue
         if cli.in_queue():
             continue
-        in_game(objects)
+        in_game(objects, settings)
         print("Match ended")
         start_time = time.time()
         time.sleep(3)
@@ -151,30 +154,31 @@ def start(objects):
         if start_time - time.time() > 180:
             print("Timed out after 180 seconds")
         game_count += 1
-        if game_count == GAMES:
+        if game_count == settings.games:
             break
 
-def key_input(objects):
-    if RECORD:
+def key_input(objects, settings):
+    if settings.record:
         FPS = 10.0
         fourcc = cv2.VideoWriter_fourcc(*'MP4V')
         out = cv2.VideoWriter("..\output.mp4", fourcc, FPS, scan.SCREEN_RES)
     while not keyboard.is_pressed('`'):
-        if RECORD:
+        if settings.record:
             try:
                 frame = scan.display(objects, img="screen", team=None)
             except:
                 continue
             out.write(frame)
         pass
-    if RECORD:
+    if settings.record:
         out.release()
 
-if __name__ == '__main__':
+def run_app(settings):
     manager = multiprocessing.Manager()
     shared_list = manager.list()
-    proc1 = multiprocessing.Process(target=start, args=[shared_list])
-    proc2 = multiprocessing.Process(target=key_input, args=[shared_list])
+
+    proc1 = multiprocessing.Process(target=start, args=[shared_list, settings])
+    proc2 = multiprocessing.Process(target=key_input, args=[shared_list, settings])
     proc1.start()
     proc2.start()
     while proc2.is_alive():
@@ -182,4 +186,3 @@ if __name__ == '__main__':
     print("Quitting")
     proc1.terminate()
     proc2.join()
-    print("Quitted")
