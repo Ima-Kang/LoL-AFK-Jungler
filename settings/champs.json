@@ -1,0 +1,116 @@
+{
+  "nunu & willump": {
+    "items": [
+      ["hailblade", 350],
+      ["bami's cinder", 1100],
+      ["plated steelcaps", 1100],
+      ["aegis of the legion", 1400],
+      ["sunfire aegis", 700],
+      ["winged moonplate", 800],
+      ["chain vest", 800],
+      ["dead man's plate", 1300],
+      ["bramble vest", 800],
+      ["giant's belt", 900],
+      ["thornmail", 1000],
+      ["spectre's cowl", 1250],
+      ["kindlegem", 800],
+      ["spirit visage", 850],
+      ["giant's belt", 900],
+      ["kindlegem", 800],
+      ["warmogs", 1300]
+    ],
+    "cast_order": ["r", "q", "e", "w"],
+    "cast_time": {
+      "q": 0.1,
+      "w": 0.1,
+      "e": 0.1,
+      "r": 5
+    }
+  },
+  "warwick": {
+    "items": [
+      ["emberknife", 350],
+      ["tiamat", 1200],
+      ["plated steelcaps", 1100],
+      ["warhammer", 1100],
+      ["sheen", 700],
+      ["kindlegem", 800],
+      ["divine sunderer", 700],
+      ["giant's belt", 900],
+      ["titanic hydra", 1200],
+      ["bramble vest", 800],
+      ["giant's belt", 900],
+      ["thornmail", 1000],
+      ["spectre's cowl", 1250],
+      ["kindlegem", 800],
+      ["spirit visage", 850],
+      ["giant's belt", 900],
+      ["kindlegem", 800],
+      ["warmogs", 1300]
+    ],
+    "cast_order": ["r", "q", "e", "w"],
+    "cast_time": {
+      "q": 0.1,
+      "w": 0.1,
+      "e": 0.1,
+      "r": 1
+    }
+  },
+  "udyr": {
+    "items": [
+      ["emberknife", 350],
+      ["tiamat", 1200],
+      ["plated steelcaps", 1100],
+      ["warhammer", 1100],
+      ["sheen", 700],
+      ["kindlegem", 800],
+      ["divine sunderer", 700],
+      ["blasting wand", 850],
+      ["giant's belt", 900],
+      ["demonic embrace", 1250],
+      ["giant's belt", 900],
+      ["titanic hydra", 1200],
+      ["bramble vest", 800],
+      ["giant's belt", 900],
+      ["thornmail", 1000],
+      ["spectre's cowl", 1250],
+      ["kindlegem", 800],
+      ["spirit visage", 850]
+    ],
+    "cast_order": ["q", "e", "w", "r"],
+    "cast_time": {
+      "q": 0.1,
+      "w": 0.1,
+      "e": 0.1,
+      "r": 0.1
+    }
+  },
+  "fiddlesticks": {
+    "items": [
+      ["emberknife", 350],
+      ["lost chapter", 1300],
+      ["sorcerer's shoes", 1100],
+      ["fiendish codex", 900],
+      ["liandry's anguish", 1000],
+      ["blasting wand", 850],
+      ["giant's belt", 900],
+      ["demonic embrace", 1250],
+      ["blasting wand", 850],
+      ["oblivion orb", 850],
+      ["morellonomicon", 850],
+      ["blighting jewel", 1250],
+      ["blasting wand", 850],
+      ["void staff", 700],
+      ["spectre's cowl", 1250],
+      ["kindlegem", 800],
+      ["spirit visage", 850]
+    ],
+    "cast_order": ["r", "w", "e", "q"],
+    "cast_time": {
+      "q": 0.1,
+      "w": 3,
+      "e": 0.1,
+      "r": 5
+    }
+  }
+}
