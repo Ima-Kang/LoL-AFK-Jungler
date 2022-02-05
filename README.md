@@ -32,6 +32,6 @@ Also, make sure that your screen resolution is 1920x1080. If it's not:
 3. Select jg role (if not bots)
 4. Run the program
 
-- The script will start by looking for the find match button. If it doesn't find it, something went wrong
+- The script will start by looking for the find match button. If it doesn't find it, something went wrong. Try changing the client window size to 1280x720
 - If queue gets dodged or declined, don't do anything. The bot will pick up on it and requeue after a minute so just wait
 - You can stop the bot by pressing the '`' key
