@@ -78,6 +78,7 @@ def in_game(objects, settings):
     while not fetch("eventdata"):
         pass
     print("On Loading Screen")
+    time.sleep(1)
     while not active_player.team:
         try:
             for i, p in enumerate(fetch("playerlist")):
