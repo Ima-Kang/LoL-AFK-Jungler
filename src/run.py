@@ -154,7 +154,9 @@ def start(objects, settings):
             print("Timed out after 180 seconds")
         game_count += 1
         if game_count == settings.games:
-            break
+            print(f"{settings.games} reached")
+            print("Quitting")
+            exit()
 
 def key_input(objects, settings):
     if settings.record:

@@ -31,7 +31,6 @@ def set_record(record_text):
 
 if __name__ == "__main__":
     root = tk.Tk()
-    root.geometry("300x225")
     root.resizable(False, False)
     root.title('LoL AFK Jungler')
     root.iconphoto(False, tk.PhotoImage(file=r'..\res\nunu & willump.png'))
