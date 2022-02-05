@@ -27,11 +27,16 @@ Also, make sure that your screen resolution is 1920x1080. If it's not:
 5. Set to 1920x1080
 
 # How to run
-1. From home screen, go to find match
-2. Select appropriate game mode
-3. Select jg role (if not bots)
-4. Run the program
+1. From LoL home screen, go to find match
+2. Select Draft/Ranked
+3. Select jg role
+4. Run menu.pyw and set variables
+5. Click run when complete
 
-- The script will start by looking for the find match button. If it doesn't find it, something went wrong. Try changing the client window size to 1280x720
+- The script will start by looking for the "find match" button
 - If queue gets dodged or declined, don't do anything. The bot will pick up on it and requeue after a minute so just wait
 - You can stop the bot by pressing the '`' key
+
+# Issues you may run into
+1. If your name has been flagged, the bot may not work. If the bot doesnt respond after 30 seconds once in game, then this is probably the issue. You will have to change your name to fix this.
+2.  If it doesn't click the "find match" button after a fews seconds once the run button is clicked, try changing the client window size and restarting it
