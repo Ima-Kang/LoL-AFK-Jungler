@@ -155,8 +155,7 @@ def start(objects, settings):
         game_count += 1
         if game_count == settings.games:
             print(f"{settings.games} reached")
-            print("Quitting")
-            exit()
+            break
 
 def key_input(objects, settings):
     if settings.record:
@@ -197,10 +196,12 @@ def run_app(settings):
     proc2 = multiprocessing.Process(target=key_input, args=[shared_list, settings])
     proc1.start()
     proc2.start()
-    while proc2.is_alive():
+
+    while proc2.is_alive() and proc1.is_alive():
         pass
     print("Quitting")
-    proc1.terminate()
+    if proc1.is_alive():
+        proc1.terminate()
     proc2.join()
     
     with open(rf"{settings.config}\game.cfg", "w") as outfile:
