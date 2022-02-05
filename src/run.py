@@ -22,10 +22,11 @@ ENDPOINTS = {
 }
 
 class Settings:
-    def __init__(self, record=False, name=None, games=0) -> None:
+    def __init__(self, record=False, name=None, games=0, config=None) -> None:
         self.record = record
         self.name = name
         self.games = games
+        self.config = config
     def set_record(self):
         self.record = not self.record
     def set_name(self):
@@ -43,7 +44,7 @@ class player:
         self.champ_info = None
         self.surrendering = False
     def set_champ_info(self):
-        f = open('champs.json')
+        f = open('..\settings\champs.json')
         self.champ_info = json.load(f)[self.champ]
     def get_gold(self):
         return math.floor(self.stats["currentGold"])
@@ -172,6 +173,21 @@ def key_input(objects, settings):
         out.release()
 
 def run_app(settings):
+    with open(rf"{settings.config}\game.cfg", "r") as infile:
+        orig_cfg = infile.read()
+    with open(rf"{settings.config}\PersistedSettings.json", "r") as infile:
+        orig_set = infile.read()
+
+    with open(r"..\settings\game.cfg", "r") as infile:
+        bot_cfg = infile.read()
+    with open(r"..\settings\PersistedSettings.json", "r") as infile:
+        bot_set = infile.read()
+    
+    with open(rf"{settings.config}\game.cfg", "w") as outfile:
+        outfile.write(bot_cfg)
+    with open(rf"{settings.config}\PersistedSettings.json", "w") as outfile:
+        outfile.write(bot_set)
+
     manager = multiprocessing.Manager()
     shared_list = manager.list()
 
@@ -184,3 +200,8 @@ def run_app(settings):
     print("Quitting")
     proc1.terminate()
     proc2.join()
+    
+    with open(rf"{settings.config}\game.cfg", "w") as outfile:
+        outfile.write(orig_cfg)
+    with open(rf"{settings.config}\PersistedSettings.json", "w") as outfile:
+        outfile.write(orig_set)
