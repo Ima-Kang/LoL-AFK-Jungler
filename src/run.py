@@ -203,6 +203,8 @@ def run_app(settings):
     print("Quitting")
     if proc1.is_alive():
         proc1.terminate()
+    if proc2.is_alive():
+        proc2.terminate()
     proc2.join()
     
     with open(rf"{settings.config}\game.cfg", "w") as outfile:

@@ -45,7 +45,7 @@ def on_start(active_player):
     while not tm_loc and not sc_loc:
         tm_loc = scan.find(active_player.team, "map", "timer")
         sc_loc = scan.find(active_player.team, "map", "small_camp")
-        if int(time.time() - start_time) > 135:
+        if int(time.time() - start_time) > 305:
             print("Timed out")
             return
     left_click((960, 540))
